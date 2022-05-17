@@ -45,6 +45,14 @@ type BZStateMachine struct {
 	mu sync.Mutex
 }
 
+func (t StateType) String() string {
+	return string(t)
+}
+
+func (t EventType) String() string {
+	return string(t)
+}
+
 func (sm *BZStateMachine) getNextState(evt EventType) (StateType, error) {
 	if state, ok := sm.States[sm.CurrentState]; ok {
 		if state.Events != nil {
